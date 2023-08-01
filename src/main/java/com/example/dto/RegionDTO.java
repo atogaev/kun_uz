@@ -1,6 +1,6 @@
 package com.example.dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class RegionDTO {
@@ -11,5 +11,5 @@ public class RegionDTO {
     private String name_ru;
     private String name_en;
     private Boolean visible = Boolean.TRUE;
-    private LocalDate created_date = LocalDate.now();
+    private LocalDateTime created_date = LocalDateTime.now();
 }

@@ -7,12 +7,10 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 @Getter
 @Setter
-public class ArticleTypeDTO {
+public class CommentLikeDTO {
     private UUID id = UUID.randomUUID();
-    private String order_number;
-    private String name_uz;
-    private String name_ru;
-    private String name_en;
-    private String visible;
+    private UUID profile_id;
+    private UUID comment_id;
     private LocalDateTime created_date = LocalDateTime.now();
+    private String status;
 }

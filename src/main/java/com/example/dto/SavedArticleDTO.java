@@ -5,14 +5,11 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-@Getter
 @Setter
-public class ArticleTypeDTO {
+@Getter
+public class SavedArticleDTO {
     private UUID id = UUID.randomUUID();
-    private String order_number;
-    private String name_uz;
-    private String name_ru;
-    private String name_en;
-    private String visible;
+    private UUID profile_id;
+    private UUID article_id;
     private LocalDateTime created_date = LocalDateTime.now();
 }
