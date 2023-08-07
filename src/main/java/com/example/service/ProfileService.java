@@ -1,14 +1,21 @@
 package com.example.service;
 
 import com.example.dto.ProfileDTO;
+import com.example.dto.ProfileFilterDTO;
 import com.example.entity.ProfileEntity;
 import com.example.enums.ProfileStatus;
 import com.example.exp.AppBadRequestException;
 import com.example.repository.ProfileRepository;
 import com.example.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -60,14 +67,33 @@ public class ProfileService {
 
     public Boolean detailUpdate(UUID profileId, ProfileDTO dto) {
         isValid2(dto);
-        ProfileEntity entity = get(profileId);
-        entity.setName(dto.getName());
-        entity.setSurname(dto.getSurname());
-        profileRepository.save(entity);
         int effectedRows = profileRepository.detailUpdate(profileId, dto.getName(), dto.getSurname());
         return effectedRows == 1;
     }
 
+    public PageImpl<ProfileDTO> profilePage(int size,int page){
+        System.out.println(page +"  "+ size);
+        Pageable pageable = PageRequest.of(page-1,size);
+        Page<ProfileEntity> profileObg = profileRepository.findAll(pageable);
+        List<ProfileEntity> entities = profileObg.getContent();
+
+        List<ProfileDTO> profileDTOList = new LinkedList<>();
+        entities.forEach(entity -> profileDTOList.add(toDTO(entity)));
+        return new PageImpl<>(profileDTOList,pageable,profileObg.getTotalElements());
+    }
+    public Boolean delete(UUID id){
+        profileRepository.deleteById(id);
+        return true;
+    }
+    public List<ProfileFilterDTO> filter(ProfileFilterDTO filterDTO){
+
+        return null;
+    }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public ProfileEntity get(UUID profileId) {
+        return profileRepository.findById(profileId).orElseThrow(() -> new AppBadRequestException("Profilr is not founded"));
+    }
     private void isValid2(ProfileDTO dto) {
         if (dto.getName() == null || dto.getName().isBlank() || dto.getName().length() < 2){
             throw new AppBadRequestException("Name is not valid");
@@ -75,10 +101,6 @@ public class ProfileService {
         if (dto.getSurname() == null || dto.getSurname().isBlank() || dto.getSurname().length() < 2){
             throw new AppBadRequestException("Surnamer is not valid");
         }
-    }
-
-    public ProfileEntity get(UUID profileId) {
-        return profileRepository.findById(profileId).orElseThrow(() -> new AppBadRequestException("Profilr is not founded"));
     }
 
     void isValid(ProfileDTO dto) {
@@ -108,5 +130,17 @@ public class ProfileService {
                 }
             }
         }
+    }
+    public ProfileDTO toDTO(ProfileEntity entity){
+        ProfileDTO pDTO = new ProfileDTO();
+        pDTO.setId(entity.getId());
+        pDTO.setName(entity.getName());
+        pDTO.setSurname(entity.getSurname());
+        pDTO.setEmail(entity.getEmail());
+        pDTO.setPassword(entity.getPassword());
+        pDTO.setPhone(entity.getPhone());
+        pDTO.setRole(entity.getRole());
+        pDTO.setCreated_date(entity.getCreated_date());
+        return pDTO;
     }
 }
