@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 import java.util.UUID;
 @Repository
-public interface ProfileRepository extends CrudRepository<ProfileEntity, UUID>,
-        PagingAndSortingRepository<ProfileEntity,UUID> {
+public interface ProfileRepository extends CrudRepository<ProfileEntity, Long>,
+        PagingAndSortingRepository<ProfileEntity,Long> {
 
     Optional<ProfileEntity> findByEmail(String email);
 
@@ -20,7 +20,8 @@ public interface ProfileRepository extends CrudRepository<ProfileEntity, UUID>,
 
     @Transactional
     @Modifying
-    @Query("update ProfileEntity set name = ?2,surname = ?3 where id = ?1")
-    int  detailUpdate(UUID profileId, String name, String surname);
+    @Query("update ProfileEntity as p set p.name = ?2,p.surname = ?3 where p.id = ?1")
+    int  detailUpdate(Long id,String name, String surname);
 
+    Optional<ProfileEntity> findByPhoneAndPassword(String phone, String encode);
 }

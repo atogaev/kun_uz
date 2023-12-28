@@ -1,0 +1,30 @@
+###Create Region
+POST localhost:8081/api/v1/region
+Content-Type: application/json
+
+{
+  "orderNumber": 3,
+  "nameUz": "ToshkentUZ",
+  "nameEn": "TashkentEN",
+  "nameRu": "TashkentRU"
+}
+
+###Update By Id
+PUT localhost:8081/api/v1/region/update/d72311f5-3ae8-4ff8-bd4f-0764e3948867
+Content-Type: application/json
+
+{
+  "orderNumber": 2,
+  "nameUz": "BuhoroUZ",
+  "nameEn": "BuKharaEN",
+  "nameRu": "BuxoroRU"
+}
+
+###Get All
+GET localhost:8081/api/v1/region/all
+
+###Delete By Id
+DELETE localhost:8081/api/v1/region/delete/4202a5a6-5765-419e-8ead-1c16f38a1ec1
+
+###Get By Language
+GET localhost:8081/api/v1/region/lang?lang=En

@@ -5,6 +5,7 @@ import com.example.dto.ProfileFilterDTO;
 import com.example.entity.ProfileEntity;
 import com.example.enums.ProfileStatus;
 import com.example.exp.AppBadRequestException;
+import com.example.repository.CustomProfileRepository;
 import com.example.repository.ProfileRepository;
 import com.example.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,10 @@ import java.util.UUID;
 public class ProfileService {
     @Autowired
     private ProfileRepository profileRepository;
+    @Autowired
+    private CustomProfileRepository customProfileRepository;
 
-    /**
-     * 1
-     */
-    public ProfileDTO create(ProfileDTO dto) {
+    public ProfileDTO create(ProfileDTO dto,Long id) {
 
         isValid(dto);
         Optional<ProfileEntity> findByEmile = profileRepository.findByEmail(dto.getEmail());
@@ -47,6 +47,7 @@ public class ProfileService {
         entity.setPassword(MD5Util.encode(dto.getPassword()));
         entity.setStatus(ProfileStatus.ACTIVE);
         entity.setRole(dto.getRole());
+        entity.setPrtId(id);
 
         profileRepository.save(entity);
         dto.setId(entity.getId());
@@ -54,7 +55,7 @@ public class ProfileService {
         return dto;
     }
 
-    public Boolean update(UUID profileId, ProfileDTO dto) {
+    public Boolean update(Long profileId, ProfileDTO dto) {
         isValid(dto);
         ProfileEntity entity = get(profileId);
         entity.setName(dto.getName());
@@ -65,7 +66,7 @@ public class ProfileService {
         return true;
     }
 
-    public Boolean detailUpdate(UUID profileId, ProfileDTO dto) {
+    public Boolean detailUpdate(Long profileId, ProfileDTO dto) {
         isValid2(dto);
         int effectedRows = profileRepository.detailUpdate(profileId, dto.getName(), dto.getSurname());
         return effectedRows == 1;
@@ -81,17 +82,19 @@ public class ProfileService {
         entities.forEach(entity -> profileDTOList.add(toDTO(entity)));
         return new PageImpl<>(profileDTOList,pageable,profileObg.getTotalElements());
     }
-    public Boolean delete(UUID id){
+    public Boolean delete(Long id){
         profileRepository.deleteById(id);
         return true;
     }
-    public List<ProfileFilterDTO> filter(ProfileFilterDTO filterDTO){
-
-        return null;
+    public List<ProfileDTO> filter(ProfileFilterDTO filterDTO){
+         List<ProfileEntity> entities = customProfileRepository.filter(filterDTO);
+         List<ProfileDTO> dtoList = new LinkedList<>();
+         entities.forEach(entity -> dtoList.add(toDTO(entity)));
+        return dtoList;
     }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public ProfileEntity get(UUID profileId) {
+    public ProfileEntity get(Long profileId) {
         return profileRepository.findById(profileId).orElseThrow(() -> new AppBadRequestException("Profilr is not founded"));
     }
     private void isValid2(ProfileDTO dto) {
