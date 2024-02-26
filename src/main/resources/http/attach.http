@@ -1,0 +1,10 @@
+POST http://localhost:8081/api/v1/attach/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="IMG_20180318_142441.jpg"
+
+< C:\Users\ASUS\Desktop\Foundation JAVA\IMG_20180318_142441.jpg
+
+###get
+GET http://localhost:8081/api/v1/attach/open/IMG_20180318_142441.jpg

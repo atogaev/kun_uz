@@ -1,8 +1,8 @@
 package com.example.service;
 
 import com.example.dto.RegionDTO;
-import com.example.enums.Language;
 import com.example.entity.RegionEntity;
+import com.example.enums.LanguageEnum;
 import com.example.exp.AppBadRequestException;
 import com.example.repository.RegionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,12 +66,15 @@ public class RegionService {
 //        return null;
 //    }
 
-    public List<RegionDTO> getAll() {
+  /*  public List<RegionDTO> getAll() {
        Iterable<RegionEntity> entities = regionRepository.findAll();
-
-        return null;
-    }
-
+       List<RegionDTO> regionDTOList = new LinkedList<>();
+       entities.forEach(entity -> regionDTOList.add(toDTO(entity)));
+        return regionDTOList;
+    }*/
+  public RegionEntity get(Integer id) {
+      return regionRepository.findById(id).orElseThrow(() -> new AppBadRequestException("Profilr is not founded"));
+  }
     private RegionDTO toDTO(RegionEntity entity){
         RegionDTO dto = new RegionDTO();
         dto.setId(entity.getId());
@@ -84,14 +87,14 @@ public class RegionService {
         return dto;
     }
 
-    public List<RegionDTO> getByLanguageVisible(Language lang) {
+    public List<RegionDTO> getByLanguageVisible(LanguageEnum lang) {
         List<RegionDTO> dtoList = new LinkedList<>();
         regionRepository.findAllByVisibleTrue().forEach(entity -> {dtoList.add(toDTO2(entity,lang));});
 
         return dtoList;
     }
 
-    private RegionDTO toDTO2(RegionEntity entity, Language lang) {
+    private RegionDTO toDTO2(RegionEntity entity, LanguageEnum lang) {
         RegionDTO dto = new RegionDTO();
         dto.setId(entity.getId());
         dto.setOrderNumber(entity.getOrderNumber());

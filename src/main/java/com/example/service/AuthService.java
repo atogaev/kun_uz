@@ -4,7 +4,7 @@ import com.example.dto.ApiResponseDTO;
 import com.example.dto.AuthDTO;
 import com.example.dto.ProfileDTO;
 import com.example.entity.ProfileEntity;
-import com.example.enums.ProfileStatus;
+import com.example.enums.ProfileStatusEnum;
 import com.example.repository.ProfileRepository;
 import com.example.util.JWTUtil;
 import com.example.util.MD5Util;
@@ -24,7 +24,7 @@ public class AuthService {
         if (optional.isEmpty() || (!entity.getPassword().equals(MD5Util.encode(dto.getPassword()))) ){
             return new ApiResponseDTO(false,"Login or Password is wrong");
         }
-        if (!entity.getStatus().equals(ProfileStatus.ACTIVE) || !entity.getVisible()){
+        if (!entity.getStatus().equals(ProfileStatusEnum.ACTIVE) || !entity.getVisible()){
             return new ApiResponseDTO(false,"Your status is not active. Please connect with support");
         }
 

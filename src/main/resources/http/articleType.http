@@ -1,0 +1,28 @@
+### Create
+POST localhost:8081/api/v1/articleType/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDQyNTA3OTQsImlkIjoxLCJyb2xlIjoiUk9MRV9NT0RFUkFUT1IiLCJleHAiOjE3MDQzMzcxOTQsImlzcyI6Imt1bl91eiB0ZXN0IHBvcnRhbGkifQ.T7H-dIANh7g9bVRDYgz3ecc9U4kZjRg2SkJELPGIADqCB5Kldfm2v_YkwTWbMCtLzyoGVCTNOGMrLnc1h1DPZA
+
+{
+  "order_number": "Uzum",
+  "name_uz": "Qiziq",
+  "name_ru": "Interesting",
+  "name_en": "Interesting"
+}
+### UPdate
+PUT localhost:8081/api/v1/articleType/update/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDQyNTA3OTQsImlkIjoxLCJyb2xlIjoiUk9MRV9NT0RFUkFUT1IiLCJleHAiOjE3MDQzMzcxOTQsImlzcyI6Imt1bl91eiB0ZXN0IHBvcnRhbGkifQ.T7H-dIANh7g9bVRDYgz3ecc9U4kZjRg2SkJELPGIADqCB5Kldfm2v_YkwTWbMCtLzyoGVCTNOGMrLnc1h1DPZA
+
+{
+  "order_number": "uzun",
+  "name_uz": "jamoat",
+  "name_ru": "Talpa",
+  "name_en": "Comunity"
+}
+###Delete By Id
+DELETE localhost:8081/api/v1/articleType/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDQyNTA3OTQsImlkIjoxLCJyb2xlIjoiUk9MRV9NT0RFUkFUT1IiLCJleHAiOjE3MDQzMzcxOTQsImlzcyI6Imt1bl91eiB0ZXN0IHBvcnRhbGkifQ.T7H-dIANh7g9bVRDYgz3ecc9U4kZjRg2SkJELPGIADqCB5Kldfm2v_YkwTWbMCtLzyoGVCTNOGMrLnc1h1DPZA
+###Pagination
+GET localhost:8081/api/v1/articleType/pegination?page=1&size=5
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDQyNTA3OTQsImlkIjoxLCJyb2xlIjoiUk9MRV9NT0RFUkFUT1IiLCJleHAiOjE3MDQzMzcxOTQsImlzcyI6Imt1bl91eiB0ZXN0IHBvcnRhbGkifQ.T7H-dIANh7g9bVRDYgz3ecc9U4kZjRg2SkJELPGIADqCB5Kldfm2v_YkwTWbMCtLzyoGVCTNOGMrLnc1h1DPZA

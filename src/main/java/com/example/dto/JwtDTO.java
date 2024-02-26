@@ -1,6 +1,6 @@
 package com.example.dto;
 
-import com.example.enums.ProfileRole;
+import com.example.enums.ProfileRoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,5 +12,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class JwtDTO {
     private Long id;
-    private ProfileRole role;
+    private ProfileRoleEnum role;
 }

@@ -3,7 +3,7 @@ package com.example.service;
 import com.example.dto.ProfileDTO;
 import com.example.dto.ProfileFilterDTO;
 import com.example.entity.ProfileEntity;
-import com.example.enums.ProfileStatus;
+import com.example.enums.ProfileStatusEnum;
 import com.example.exp.AppBadRequestException;
 import com.example.repository.CustomProfileRepository;
 import com.example.repository.ProfileRepository;
@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class ProfileService {
@@ -45,7 +44,7 @@ public class ProfileService {
         entity.setEmail(dto.getEmail());
         entity.setPhone(dto.getPhone());
         entity.setPassword(MD5Util.encode(dto.getPassword()));
-        entity.setStatus(ProfileStatus.ACTIVE);
+        entity.setStatus(ProfileStatusEnum.ACTIVE);
         entity.setRole(dto.getRole());
         entity.setPrtId(id);
 

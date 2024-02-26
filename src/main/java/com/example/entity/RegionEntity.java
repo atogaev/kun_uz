@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 @Setter
 @Getter
@@ -25,6 +26,10 @@ public class RegionEntity {
     private String nameEn;
     @Column(name = "visible")
     private Boolean visible = Boolean.TRUE;
+
+    @OneToMany(mappedBy = "region")
+    private List<ArticleEntity> article;
+
     @Column(name = "createdDate")
     private LocalDateTime createdDate = LocalDateTime.now();
 }

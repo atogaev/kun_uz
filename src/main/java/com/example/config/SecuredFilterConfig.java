@@ -17,6 +17,9 @@ public class SecuredFilterConfig {
         bean.setFilter(jwtFilter);
         bean.addUrlPatterns("/api/v1/profile/*");
         bean.addUrlPatterns("/api/v1/region/admin/*");
+        bean.addUrlPatterns("/api/v1/articleType/*");
+        bean.addUrlPatterns("/api/v1/category/moderator/*");
+        bean.addUrlPatterns("/api/v1/attach/**");
         return bean;
     }
 }

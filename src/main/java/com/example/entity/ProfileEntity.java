@@ -1,13 +1,12 @@
 package com.example.entity;
 
-import com.example.enums.ProfileRole;
-import com.example.enums.ProfileStatus;
+import com.example.enums.ProfileRoleEnum;
+import com.example.enums.ProfileStatusEnum;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Setter
 @Getter
@@ -29,10 +28,10 @@ public class ProfileEntity {
     private String password;
     @Column(name = "status",nullable = false)
     @Enumerated(EnumType.STRING)
-    private ProfileStatus status = ProfileStatus.ACTIVE;
+    private ProfileStatusEnum status = ProfileStatusEnum.ACTIVE;
     @Column(name = "role",nullable = false)
     @Enumerated(EnumType.STRING)
-    private ProfileRole role = ProfileRole.ROLE_USER;
+    private ProfileRoleEnum role = ProfileRoleEnum.ROLE_USER;
     @Column(name = "visible")
     private Boolean visible = Boolean.TRUE;
     @Column(name = "created_date")

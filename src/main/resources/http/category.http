@@ -1,0 +1,30 @@
+###Careate
+POST localhost:8081/api/v1/category
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDQ1MDk5ODQsImlkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImV4cCI6MTcwNDU5NjM4NCwiaXNzIjoia3VuX3V6IHRlc3QgcG9ydGFsaSJ9.rCwkdpeVN7YwjoU7JGrmpC7Z8dPCmA57qg6KDuT204WZ639abv8SMbdQiV5JZb_oyTTJcruq0SiA5nclBj8wDg
+
+{
+  "order_number": 2,
+  "name_uz": "Yurtimitz",
+  "name_en": "Our country",
+  "name_ru": "Nash Region"
+}
+###Update By Id
+PUT localhost:8081/api/v1/category/update/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDQ1MDk5ODQsImlkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImV4cCI6MTcwNDU5NjM4NCwiaXNzIjoia3VuX3V6IHRlc3QgcG9ydGFsaSJ9.rCwkdpeVN7YwjoU7JGrmpC7Z8dPCmA57qg6KDuT204WZ639abv8SMbdQiV5JZb_oyTTJcruq0SiA5nclBj8wDg
+
+{
+  "order_number": 5,
+  "name_uz": "Jahon",
+  "name_ru": "Mir",
+  "name_en": "World"
+}
+###Delete By Id
+DELETE localhost:8081/api/v1/category/delete/2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDQ1MDk5ODQsImlkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImV4cCI6MTcwNDU5NjM4NCwiaXNzIjoia3VuX3V6IHRlc3QgcG9ydGFsaSJ9.rCwkdpeVN7YwjoU7JGrmpC7Z8dPCmA57qg6KDuT204WZ639abv8SMbdQiV5JZb_oyTTJcruq0SiA5nclBj8wDg
+###Get All
+GET localhost:8081/api/v1/category/getByOrderNum
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDQ1MDk5ODQsImlkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImV4cCI6MTcwNDU5NjM4NCwiaXNzIjoia3VuX3V6IHRlc3QgcG9ydGFsaSJ9.rCwkdpeVN7YwjoU7JGrmpC7Z8dPCmA57qg6KDuT204WZ639abv8SMbdQiV5JZb_oyTTJcruq0SiA5nclBj8wDg
+###Get By Language
+GET localhost:8081/api/v1/category/lang?lang=En

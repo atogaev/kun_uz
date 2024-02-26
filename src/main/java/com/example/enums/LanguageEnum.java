@@ -1,5 +1,5 @@
 package com.example.enums;
 
-public enum Language {
+public enum LanguageEnum {
     En,Ru,Uz
 }
