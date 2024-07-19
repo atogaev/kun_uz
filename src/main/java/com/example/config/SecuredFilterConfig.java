@@ -16,10 +16,11 @@ public class SecuredFilterConfig {
         FilterRegistrationBean<Filter> bean = new FilterRegistrationBean<>();
         bean.setFilter(jwtFilter);
         bean.addUrlPatterns("/api/v1/profile/*");
-        bean.addUrlPatterns("/api/v1/region/admin/*");
         bean.addUrlPatterns("/api/v1/articleType/*");
         bean.addUrlPatterns("/api/v1/category/moderator/*");
         bean.addUrlPatterns("/api/v1/attach/**");
+        bean.addUrlPatterns("/v3/api-docs");
+        bean.addUrlPatterns("/v3/api-docs/**");
         return bean;
     }
 }

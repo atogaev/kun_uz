@@ -93,4 +93,11 @@ public class ArticleTypeService {
         }
         return dtoList;
     }
+    public void merge(Integer articleId,List<Integer> newList){
+        List<Integer> oldList = articleTypeRepository.getAllArticleTypeIdList(articleId);
+
+        for (Integer typId:oldList) {
+            if (typId)
+        }
+    }
 }

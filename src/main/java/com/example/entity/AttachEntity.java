@@ -3,6 +3,7 @@ package com.example.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -12,8 +13,7 @@ import java.util.UUID;
 @Setter
 public class AttachEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;// (uuid)
+    private String id;// (uuid)
     @Column
     private String original_name;
     @Column
@@ -22,6 +22,7 @@ public class AttachEntity {
     private Long size;
     @Column
     private String extension;
+    @CreationTimestamp
     @Column
     private LocalDateTime created_date;
 }

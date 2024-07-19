@@ -5,12 +5,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ArticleTypeRepository extends CrudRepository<ArticleTypeEntity,Integer>,
         PagingAndSortingRepository<ArticleTypeEntity,Integer> {
     @Query("from ArticleTypeEntity where order_number = ?1")
     Optional<ArticleTypeEntity> findByOrder_number(String orderNumber);
+
+    List<Integer> getAllArticleTypeIdList(Integer articleId);
 
 //    @Transactional
 //    @Modifying

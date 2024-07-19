@@ -16,7 +16,7 @@ import java.util.UUID;
 public class ArticleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private String id;
     @Column(name = "title")
     private String title;
     @Column(name = "description",
@@ -49,7 +49,7 @@ public class ArticleEntity {
     private Long prtId;
 
     @Column(name = "attach_id")
-    private UUID attachId;
+    private String  attachId;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "attach_id",insertable = false,updatable = false)
     private AttachEntity attach;
@@ -65,6 +65,12 @@ public class ArticleEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id",insertable = false,updatable = false)
     private CategoryEntity category;
+
+    @Column(name = "articleType_id")
+    private Integer articleTypeId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "articleType_id",insertable = false,updatable = false)
+    private ArticleTypeEntity articleType;
 
     @Column(name = "moderator_id")
     private Long moderator_id;

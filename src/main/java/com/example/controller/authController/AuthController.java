@@ -1,7 +1,8 @@
-package com.example.controller;
+package com.example.controller.authController;
 
 import com.example.dto.ApiResponseDTO;
 import com.example.dto.AuthDTO;
+import com.example.dto.RegistrationDTO;
 import com.example.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,4 +21,6 @@ public class AuthController {
     public ResponseEntity<ApiResponseDTO> login(@RequestBody AuthDTO dto){
         return ResponseEntity.ok(authService.login(dto));
     }
+//    @PostMapping(value = "/registration")
+//    public ResponseEntity<RegistrationDTO> register(@RequestBody RegistrationDTO dto)
 }

@@ -1,0 +1,14 @@
+name: Build & Deploy Spring app
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    name: kun_uz
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actoions/checkout@v4

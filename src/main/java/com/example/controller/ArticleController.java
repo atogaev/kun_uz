@@ -1,12 +1,9 @@
 package com.example.controller;
 
-import com.example.dto.ApiResponseDTO;
 import com.example.dto.ArticleDTO;
-import com.example.dto.AuthDTO;
 import com.example.dto.JwtDTO;
 import com.example.enums.ProfileRoleEnum;
 import com.example.service.ArticleService;
-import com.example.service.AuthService;
 import com.example.util.SecurityUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
